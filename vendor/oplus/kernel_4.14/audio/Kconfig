@@ -1,0 +1,45 @@
+#
+# oplus extend audio codec configuration
+#
+
+# Xianliang.Zhong@MULTIMEDIA.AUDIODRIVER.SMARTPA, 2021/08/17, move sia81XX driver folder to oplus/kernel-4.14
+config SIA_PA_ALGO
+	bool "Use SIA PA ALGO"
+	default n
+
+#ifdef OPLUS_BUG_COMPATIBILITY
+# Haoyun.Luo@MULTIMEDIA.AUDIODRIVER.SMARTPA, 2021/08/27, move aw87339 driver folder to oplus/kernel-4.14
+config SND_SOC_CODEC_AW87339
+	bool "Use AW87339 As PA"
+	default n
+#endif /* OPLUS_BUG_COMPATIBILITY */
+
+config SND_TFA98XX_I2C_ADD_REVERSE
+	bool "I2C is REVERSE"
+	default n
+
+#ifdef OPLUS_ARCH_EXTENDS
+#Kun.Zhao@MULTIMEDIA.AUDIODRIVER.MACHINE, 2021/4/22, bring up aw87339
+config SND_SOC_AW87XXX
+       bool "Use AW87xxx As PA"
+       default n
+
+#Kun.Zhao@MULTIMEDIA.AUDIODRIVER.CODEC,2021/4/22,add PA manager
+       config SND_SOC_OPLUS_PA_MANAGER
+       bool "add PA manager"
+       default n
+#endif /* OPLUS_ARCH_EXTENDS */
+
+# Jingjing.Jiang@PSW.MM.AudioDriver.feature, 2020/11/02, add for dbmdx soundtrigger
+#ifdef OPLUS_BUG_COMPATIBILITY
+config SND_SOC_DBMDX
+	bool "Use DBMDX As Sound Card"
+	default n
+
+source sound/soc/codecs/audio/dbmdx/Kconfig
+#endif /* OPLUS_BUG_COMPATIBILITY */
+
+# wangkangming@MULTIMEDIA.AUDIODRIVER.SMARTPA，2022/04/06, move aw87418 driver folder to oplus/kernel-4.14
+config SND_SOC_CODEC_AW87418
+	bool "SoC Audio for awinic AW87XXX Smart K PA"
+	default n
